@@ -10,9 +10,16 @@ public class HomeController : Controller
     {
         return View();
     }
-    
-    public ViewResult RsvpForm(){
+
+    public ViewResult RsvpForm()
+    {
         return View();
+    }
+
+    [HttpPost]
+    public ViewResult RsvpForm(GuestResponse gr)
+    {
+        return View(gr);
     }
 
 
