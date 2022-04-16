@@ -19,7 +19,8 @@ public class HomeController : Controller
     [HttpPost]
     public ViewResult RsvpForm(GuestResponse gr)
     {
-        return View(gr);
+        Repository.AddResponse(gr);
+        return View("Thanks",gr);
     }
 
 
