@@ -26,6 +26,19 @@
                 }
             }
         }
+
+
+        public static IEnumerable<Product?> FilterByName(
+       this IEnumerable<Product?> productEnum, char firstLetter)
+        {
+            foreach (Product? product in productEnum)
+            {
+                if (product?.Name?[0] == firstLetter)// Pay attention here!
+                {
+                    yield return product;
+                }
+            }
+        }
     }
 
    

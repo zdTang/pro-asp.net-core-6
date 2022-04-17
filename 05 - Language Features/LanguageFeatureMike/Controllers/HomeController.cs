@@ -43,5 +43,25 @@ namespace LanguageFeatureMike.Controllers
 
             return View("Index", new string[] {$"Array Total:{arrayTotal:C2}"});
         }
+
+        public ViewResult Index3()
+        {
+
+            Product[] productArray =
+            {
+                new Product{Name="Kayak",Price=275M},
+                new Product{Name="LifeJacket",Price=48.95M},
+                new Product{Name="Kayak2",Price=18M},
+                new Product{Name="LifeJacket2",Price=48.95M},
+                new Product{Name="Kayak3",Price=275M},
+                new Product{Name="LifeJacket3",Price=15M}
+            };
+
+
+            decimal priceFilterTotal = productArray.FilterByPrice(20).TotalPrices();
+            decimal nameFilterTotal = productArray.FilterByName('L').TotalPrices();
+            return View("Index", new string[] { $"priceFilterTotal:{priceFilterTotal:C2}", 
+                $"nameFilterTotal:{nameFilterTotal:C2}" });
+        }
     }
 }
