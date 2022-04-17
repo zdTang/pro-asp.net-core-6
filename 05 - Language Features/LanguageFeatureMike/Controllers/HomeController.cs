@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿//using Microsoft.AspNetCore.Mvc;
+//using LanguageFeatureMike.Models;
+// those namespaces are ignored by GlobalUsing
 
 namespace LanguageFeatureMike.Controllers
 {
@@ -6,7 +8,8 @@ namespace LanguageFeatureMike.Controllers
     {
         public ViewResult Index()
         {
-            return View(new string[] {"c#","language","features"});
+            Product[]products=Product.GetProducts();
+            return View(new string[] { products[0].Name});
         }
     }
 }
