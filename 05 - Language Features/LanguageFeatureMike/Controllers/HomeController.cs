@@ -106,7 +106,7 @@ namespace LanguageFeatureMike.Controllers
                 new {Name="LifeJacket3",Price=15M}
             };
 
-            return View("Index", products.Select(p=>p.Name)); // select Name into a new collection
+            return View("Index", products.Select(p=>p.GetType().Name)); // select Name into a new collection
         }
     }
 }
