@@ -28,12 +28,26 @@
         }
 
 
-        public static IEnumerable<Product?> FilterByName(
+       public static IEnumerable<Product?> FilterByName(
        this IEnumerable<Product?> productEnum, char firstLetter)
-        {
+       {
             foreach (Product? product in productEnum)
             {
                 if (product?.Name?[0] == firstLetter)// Pay attention here!
+                {
+                    yield return product;
+                }
+            }
+       }
+
+        // This one is a generic filter and will be used for filter any aspect of Type Product
+
+        public static IEnumerable<Product?> Filter(
+        this IEnumerable<Product?> productEnum, Func<Product?,bool> selector)
+        {
+            foreach (Product? product in productEnum)
+            {
+                if (selector(product))// Pay attention here!
                 {
                     yield return product;
                 }

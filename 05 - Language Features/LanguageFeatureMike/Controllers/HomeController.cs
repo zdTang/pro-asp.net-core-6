@@ -63,5 +63,35 @@ namespace LanguageFeatureMike.Controllers
             return View("Index", new string[] { $"priceFilterTotal:{priceFilterTotal:C2}", 
                 $"nameFilterTotal:{nameFilterTotal:C2}" });
         }
+        // Before using lambda Expression
+        bool FilterByPrice(Product? p)
+        {
+            return (p?.Price ?? 0) >= 0;
+        }
+        // Be Aware this is not a function, this is an Expression.
+        // Delegate is an old approach to represent anonymous method
+        Func<Product?, bool> nameFilter = delegate (Product? p)
+           {
+               return p?.Name[0] == 'K';
+           };
+        public ViewResult Index4()
+        {
+
+            Product[] productArray =
+            {
+                new Product{Name="Kayak",Price=275M},
+                new Product{Name="LifeJacket",Price=48.95M},
+                new Product{Name="Kayak2",Price=18M},
+                new Product{Name="LifeJacket2",Price=48.95M},
+                new Product{Name="Kayak3",Price=275M},
+                new Product{Name="LifeJacket3",Price=15M}
+            };
+
+            // Pass an Expression to Filter !!
+            decimal priceFilterTotal = productArray.Filter(FilterByPrice).TotalPrices();
+            decimal nameFilterTotal = productArray.Filter(nameFilter).TotalPrices();
+            return View("Index", new string[] { $"priceFilterTotal:{priceFilterTotal:C2}",
+                $"nameFilterTotal:{nameFilterTotal:C2}" });
+        }
     }
 }
