@@ -8,10 +8,20 @@ namespace LanguageFeatureMike.Controllers
     {
         public ViewResult Index()
         {
-            Product?[]products=Product.GetProducts();
-
+            ShoppingCart cart = new ShoppingCart {Products=Product.GetProducts()}; 
             
-            return View(new string[] { products[0]?.Name??"No value"});
+
+            Product[] productArray =
+            {
+                new Product{Name="Kayak",Price=275M},
+                new Product{Name="LifeJacket",Price=48.95M}
+            };
+
+            decimal cartTotal = cart.TotalPrices();
+            decimal arrayTotal=productArray.TotalPrices();
+            
+            return View("Index",new string[] {$"Cart Total:{cartTotal:C2}",
+            $"Array Total:{arrayTotal:C2}"});
         }
     }
 }
