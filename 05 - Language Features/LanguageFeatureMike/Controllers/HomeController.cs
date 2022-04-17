@@ -108,5 +108,19 @@ namespace LanguageFeatureMike.Controllers
 
             return View("Index", products.Select(p=>p.GetType().Name)); // select Name into a new collection
         }
+
+        public ViewResult Index6()
+        {
+            IProductSelection cart = new ShoppingCartTwo(
+                new Product{ Name = "Kayak", Price = 275M },
+                new Product { Name = "LifeJacket", Price = 48.95M },
+                new Product { Name = "Kayak2", Price = 18M },
+                new Product { Name = "LifeJacket2", Price = 48.95M },
+                new Product { Name = "Kayak3", Price = 275M },
+                new Product { Name = "LifeJacket3", Price = 15M });
+            
+
+            return View("Index", cart.Products.Select(p => p.Name)); // select Name into a new collection
+        }
     }
 }
