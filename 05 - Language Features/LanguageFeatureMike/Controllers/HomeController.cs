@@ -93,5 +93,20 @@ namespace LanguageFeatureMike.Controllers
             return View("Index", new string[] { $"priceFilterTotal:{priceFilterTotal:C2}",
                 $"nameFilterTotal:{nameFilterTotal:C2}" });
         }
+        // TEST ANONYMOUS TYPE
+        public ViewResult Index5()
+        {
+            var products = new []
+            {
+                new {Name="Kayak",Price=275M},
+                new {Name="LifeJacket",Price=48.95M},
+                new {Name="Kayak2",Price=18M},
+                new {Name="LifeJacket2",Price=48.95M},
+                new {Name="Kayak3",Price=275M},
+                new {Name="LifeJacket3",Price=15M}
+            };
+
+            return View("Index", products.Select(p=>p.Name)); // select Name into a new collection
+        }
     }
 }
