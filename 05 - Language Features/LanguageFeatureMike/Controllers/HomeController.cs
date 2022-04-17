@@ -10,14 +10,8 @@ namespace LanguageFeatureMike.Controllers
         {
             Product?[]products=Product.GetProducts();
 
-            //string val = products[0]?.Name;  // Will have error as the string is not nullable,but the Right-side could be null
-            string? val = products[0]?.Name;
-
-            if (val!=null)
-            {
-                return View(new string[] {val});
-            }
-            return View(new string[] { "No Value"});
+            
+            return View(new string[] { products[0]?.Name??"No value"});
         }
     }
 }
