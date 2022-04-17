@@ -119,8 +119,9 @@ namespace LanguageFeatureMike.Controllers
                 new Product { Name = "Kayak3", Price = 275M },
                 new Product { Name = "LifeJacket3", Price = 15M });
             
-
-            return View("Index", cart.Products.Select(p => p.Name)); // select Name into a new collection
+            // The Names property is a default implementation of the Interface !!!
+            // We can use it eventhough the ShoppingCartTwo class hasn't implement it!
+            return View("Index", cart.Names); // select Name into a new collection
         }
     }
 }
