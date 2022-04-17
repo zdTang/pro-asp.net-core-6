@@ -10,8 +10,23 @@
             foreach (Product? prod in products)
             {
                 total += prod?.Price ?? 0;
-            }  
+            }
             return total;
         }
+
+
+       public static IEnumerable<Product?> FilterByPrice(
+       this IEnumerable<Product?> productEnum, decimal minimumPrice)
+        {
+            foreach (Product? product in productEnum)
+            {
+                if ((product?.Price ?? 0) >= minimumPrice)// Pay attention here!
+                {
+                    yield return product;
+                }
+            }
+        }
     }
+
+   
 }
