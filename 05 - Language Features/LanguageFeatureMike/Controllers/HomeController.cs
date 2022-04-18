@@ -170,9 +170,9 @@ namespace LanguageFeatureMike.Controllers
                 new Product { Name = "Kayak3", Price = 275M },
                 new Product { Name = "LifeJacket3", Price = 15M } };
 
-            // The Names property is a default implementation of the Interface !!!
-            // We can use it eventhough the ShoppingCartTwo class hasn't implement it!
-            return View("Index", cart.Select(p=>$"Name:{p.Name},Price:{p.Price}")); // select Name into a new collection
+
+            //return View("Index", cart.Select(p=>$"Name:{p.Name},Price:{p.Price}"));
+            return View("Index", cart.Select(p => $"{nameof(p.Name)}:{p.Name},{nameof(p.Price)}:{p.Price}"));
         }
     }
 }
