@@ -13,5 +13,13 @@
                 });
 
         }
+
+        // using ASYNC and AWAIT
+        public async static Task<long?> GetPageLengthTwo()
+        {
+            HttpClient client = new HttpClient();
+            var httpTask = await client.GetAsync("http://apress.com");
+            return httpTask.Content.Headers.ContentLength;        
+        }
     }
 }

@@ -129,5 +129,11 @@ namespace LanguageFeatureMike.Controllers
             var length=MyAsyncMethods.GetPageLength();
             return length?.Result?.ToString()??"Zero";
         }
+
+        public async Task<string> IndexApiTwo()
+        {
+            var length = await MyAsyncMethods.GetPageLengthTwo();
+            return length?.ToString() ?? "Zero";
+        }
     }
 }
