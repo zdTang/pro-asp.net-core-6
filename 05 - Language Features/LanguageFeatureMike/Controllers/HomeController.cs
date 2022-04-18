@@ -123,5 +123,11 @@ namespace LanguageFeatureMike.Controllers
             // We can use it eventhough the ShoppingCartTwo class hasn't implement it!
             return View("Index", cart.Names); // select Name into a new collection
         }
+
+        public string IndexApi()
+        {
+            var length=MyAsyncMethods.GetPageLength();
+            return length?.Result?.ToString()??"Zero";
+        }
     }
 }
