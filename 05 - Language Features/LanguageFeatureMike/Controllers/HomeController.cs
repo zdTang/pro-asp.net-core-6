@@ -147,5 +147,16 @@ namespace LanguageFeatureMike.Controllers
             }
             return View("Index", output);   
         }
+
+        // This method will get asynchronous result one by one !
+        public async Task<ViewResult> IndexApiFour()
+        {
+            List<string> output = new List<string>();
+            await foreach(long? len in  MyAsyncMethods.GetPageLengthsEach(output, "apress.com", "microsoft.com", "amazon.com"))
+            {
+                output.Add($"Page length:{len}");
+            }
+            return View("Index", output);
+        }
     }
 }
