@@ -135,5 +135,17 @@ namespace LanguageFeatureMike.Controllers
             var length = await MyAsyncMethods.GetPageLengthTwo();
             return length?.ToString() ?? "Zero";
         }
+
+        
+
+        public async Task<ViewResult> IndexApiThree()
+        {
+            List<string> output=new List<string>();
+            foreach(long? len in await MyAsyncMethods.GetPageLengths(output, "apress.com", "microsoft.com", "amazon.com"))
+            {
+                output.Add($"Page length:{len}");
+            }
+            return View("Index", output);   
+        }
     }
 }
