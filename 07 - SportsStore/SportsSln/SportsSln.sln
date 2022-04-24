@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsStore", "SportsStore\SportsStore.csproj", "{3A8FD929-FF81-49AB-89DE-8C4EBB4AE7CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsStore.Tests", "SportsStore.Tests\SportsStore.Tests.csproj", "{661A90F4-6D82-4708-AD8F-0C65DF2A5F5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{3A8FD929-FF81-49AB-89DE-8C4EBB4AE7CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A8FD929-FF81-49AB-89DE-8C4EBB4AE7CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A8FD929-FF81-49AB-89DE-8C4EBB4AE7CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{661A90F4-6D82-4708-AD8F-0C65DF2A5F5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{661A90F4-6D82-4708-AD8F-0C65DF2A5F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{661A90F4-6D82-4708-AD8F-0C65DF2A5F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{661A90F4-6D82-4708-AD8F-0C65DF2A5F5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
