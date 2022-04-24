@@ -27,4 +27,6 @@ app.UseStaticFiles();
 
 app.MapDefaultControllerRoute();
 
+SeedData.EnsurePopulated(app);   // pass app to this method !
+
 app.Run();
