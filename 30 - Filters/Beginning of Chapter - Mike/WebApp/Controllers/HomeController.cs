@@ -1,15 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApp.Filters;
 
 namespace WebApp;
 
 /// <summary>
 /// Different level of filter!! Controller level
 /// </summary>
-[RequireHttps]
+
 public class HomeController : Controller
 {    
   
-    //[RequireHttps]
+    [HttpsOnly]
     public IActionResult Index()
     {
        
