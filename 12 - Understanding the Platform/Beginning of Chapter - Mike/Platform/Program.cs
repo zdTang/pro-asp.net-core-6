@@ -41,18 +41,7 @@ var app = builder.Build();  // here will generate a WebApplication instance
 
 //});
 
-app.Use(async (context, next) =>
-{
-    if(context.Request.Method == HttpMethods.Get && context.Request.Query["custom"] == "true")
-    {
-        //This will cause Error as the Header has been set, and the Header has been sent yet!!! 
-        context.Response.ContentType = "text/plain";                    // assign Response Header
-        await context.Response.WriteAsync("Custom MiddleWare 4!\n");  // Write text to Response Body
-    }
-    await next();
-    await context.Response.WriteAsync("Mike make fun 4!\n");  //  this line will behind "Hello World"
 
-});
 
 
 app.Use(async (context, next) =>
@@ -79,6 +68,19 @@ app.Use(async (context, next) =>
 
 });
 
+
+app.Use(async (context, next) =>
+{
+    if (context.Request.Method == HttpMethods.Get && context.Request.Query["custom"] == "true")
+    {
+        //This will cause Error as the Header has been set, and the Header has been sent yet!!! 
+        context.Response.ContentType = "text/plain";                    // assign Response Header
+        await context.Response.WriteAsync("Custom MiddleWare 4!\n");  // Write text to Response Body
+    }
+    await next();
+    await context.Response.WriteAsync("Mike make fun 4!\n");  //  this line will behind "Hello World"
+
+});
 
 
 
