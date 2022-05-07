@@ -2,36 +2,25 @@
 
 namespace WebApp;
 
+/// <summary>
+/// Different level of filter!! Controller level
+/// </summary>
+[RequireHttps]
 public class HomeController : Controller
 {    
-    // GET
+  
+    //[RequireHttps]
     public IActionResult Index()
     {
-        if (Request.IsHttps)
-        {
+       
             return View("Message","This is the Index action on the Home Controller");
-        }
-        else
-        {
-            //the response will have no body, only header 403 Forbidden
-            return new StatusCodeResult(StatusCodes.Status403Forbidden);
-        }
+
     }
     
-    /// <summary>
-    /// Check HTTPS using this approach will duplicate code in every action
-    /// </summary>
-    /// <returns></returns>
+
+    //[RequireHttps]
     public IActionResult Secure()
     {
-        if (Request.IsHttps)
-        {
-            return View("Message","This is the Secure action on the Home Controller");
-        }
-        else
-        {
-            //the response will have no body, only header 403 Forbidden
-            return new StatusCodeResult(StatusCodes.Status403Forbidden);
-        }
+        return View("Message","This is the Secure action on the Home Controller");
     }
 }
