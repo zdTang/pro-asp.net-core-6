@@ -15,12 +15,14 @@ namespace WebApp;
 
 //[GuidResponseFilterFactory]
 //[GuidResponseFilterFactory]
+[Message("This is the controller-scoped filter")]
 public class HomeController : Controller
 {    
   
     //[HttpsOnly]
     //[SimpleCache]
-    
+    [Message("This is the first action-scoped filter")]
+    [Message("This is the second action-scoped filter")]
     public IActionResult Index()
     {
        return View("Message","This is the Index action on the Home Controller");

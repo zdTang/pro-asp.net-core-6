@@ -16,8 +16,14 @@ builder.Services.AddRazorPages();
 // Use Dependency Injection to Manage Filter Lifecycles
 builder.Services.AddScoped<GuidResponseAttribute>();
 
+builder.Services.AddScoped<GuidResponseAttribute>();
+
 // This will add a global filter
-builder.Services.Configure<MvcOptions>(opts=>opts.Filters.Add<HttpsOnlyAttribute>());
+builder.Services.Configure<MvcOptions>(opts=>
+{
+    opts.Filters.Add<HttpsOnlyAttribute>();
+    opts.Filters.Add(new MessageAttribute("This is globally-scoped filter"));
+});
 
 var app = builder.Build();
 
