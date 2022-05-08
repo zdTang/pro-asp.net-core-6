@@ -7,8 +7,10 @@ namespace WebApp.Filters;
 
 /// <summary>
 /// Notice this Attribute Usage !!!
+/// This one imply AlwaysRun Result Filter, which will always run whatever Exception or Error   
 /// </summary>
 [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = true)]
+
 public class GuidResponseAttribute:Attribute,IAsyncAlwaysRunResultFilter
 {
         private int counter = 0;

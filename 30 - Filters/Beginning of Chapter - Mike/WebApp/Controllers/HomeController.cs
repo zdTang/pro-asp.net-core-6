@@ -9,9 +9,9 @@ namespace WebApp;
 /// </summary>
 
 //[SimpleCacheAsync]
-[ResultDiagnostics]
-[ServiceFilter(typeof(GuidResponseAttribute))]
-[ServiceFilter(typeof(GuidResponseAttribute))]
+//[ResultDiagnostics]
+//[ServiceFilter(typeof(GuidResponseAttribute))]
+//[ServiceFilter(typeof(GuidResponseAttribute))]
 
 //[GuidResponseFilterFactory]
 //[GuidResponseFilterFactory]

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Filters;
 using WebApp.Models;
@@ -14,6 +15,9 @@ builder.Services.AddRazorPages();
 
 // Use Dependency Injection to Manage Filter Lifecycles
 builder.Services.AddScoped<GuidResponseAttribute>();
+
+// This will add a global filter
+builder.Services.Configure<MvcOptions>(opts=>opts.Filters.Add<HttpsOnlyAttribute>());
 
 var app = builder.Build();
 
