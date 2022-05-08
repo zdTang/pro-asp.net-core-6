@@ -10,6 +10,9 @@ namespace WebApp;
 
 //[SimpleCacheAsync]
 [ResultDiagnostics]
+[GuidResponse]
+[GuidResponse]
+[GuidResponse]
 public class HomeController : Controller
 {    
   
