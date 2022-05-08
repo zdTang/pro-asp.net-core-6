@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using WebApp.Filters;
 using WebApp.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,9 @@ builder.Services.AddDbContext<DataContext>(opts => {
 });
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
+// Use Dependency Injection to Manage Filter Lifecycles
+builder.Services.AddScoped<GuidResponseFilterFactoryAttribute>();
 
 var app = builder.Build();
 
