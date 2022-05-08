@@ -1,6 +1,7 @@
 ﻿@page "/pages/message"
 @model MessageModel
 @using Microsoft.AspNetCore.Mvc.RazorPages
+@using WebApp.Filters
 
 
 @if (Model.Message is string) {
@@ -20,6 +21,7 @@
 @functions {
 
     [RequireHttps]
+    [SimpleCache]
     public class MessageModel : PageModel {
 
         public object Message { get; set; } = 
