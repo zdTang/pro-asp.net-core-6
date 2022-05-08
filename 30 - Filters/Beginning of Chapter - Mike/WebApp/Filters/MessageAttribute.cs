@@ -7,7 +7,7 @@ namespace WebApp.Filters;
 
 [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class,
     AllowMultiple = true)]
-public class MessageAttribute : Attribute, IAsyncAlwaysRunResultFilter
+public class MessageAttribute : Attribute, IAsyncAlwaysRunResultFilter,IOrderedFilter
   {
     private int counter = 0;
     private string msg;
@@ -41,4 +41,6 @@ public class MessageAttribute : Attribute, IAsyncAlwaysRunResultFilter
         resultData[$"Message_{counter}"] = msg;
         await next();
     }
-}
+
+    public int Order { get; set; }
+  }
