@@ -69,4 +69,28 @@ public class HomeController : Controller
         
         //After Action Execution, Before Action-Result Execution
     }
+
+    
+    /// <summary>
+    /// Exception Filter need to be append to the Controller, Page or Action
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    [RangeException]
+    public ViewResult GenerateException(int? id)
+    {
+        if (id == null)
+        {
+            throw new ArgumentNullException(nameof(id));
+        }else if (id > 10)
+        {
+            throw new ArgumentOutOfRangeException(nameof(id));
+        }
+        else
+        {
+            return View("Message", $"The value is {id}");
+        }
+    }
 }
