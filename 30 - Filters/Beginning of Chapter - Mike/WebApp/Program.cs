@@ -13,7 +13,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 // Use Dependency Injection to Manage Filter Lifecycles
-builder.Services.AddScoped<GuidResponseFilterFactoryAttribute>();
+builder.Services.AddScoped<GuidResponseAttribute>();
 
 var app = builder.Build();
 
