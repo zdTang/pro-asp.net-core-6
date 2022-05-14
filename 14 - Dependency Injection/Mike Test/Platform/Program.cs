@@ -23,7 +23,13 @@ app.MapGet("middleware/function", async (context) => {
 
 //app.MapGet("endpoint/class", WeatherEndpoint.Endpoint);
 
-app.MapWeather("endpoint/class");
+//app.MapWeather("endpoint/class");
+
+//app.MapEndpoint<WeatherEndpointNoStatic>("endpoint/class");
+
+//app.MapEndpoint<WeatherEndpoint>("endpoint/class");  // This one doesn't work as T is static 
+
+//app.MapEndpoint<WeatherEndpointNoStaticTwo>("endpoint/class");
 
 // Singleton approach
 app.MapGet("endpoint/function", async context => {
