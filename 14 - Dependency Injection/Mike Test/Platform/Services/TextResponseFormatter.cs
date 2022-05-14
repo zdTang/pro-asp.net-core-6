@@ -14,6 +14,11 @@
             await context.Response.
                 WriteAsync($"Response {++responseCounter}:\n{content}");
         }
+        // This Function will not be accessed with Interface as it is not defined in the Interface
+        public async Task OtherFunction(HttpContext context, string content) {
+            await context.Response.
+                WriteAsync($"Response {++responseCounter}:\n{content}");
+        }
 
         public static TextResponseFormatter Singleton
         {

@@ -23,4 +23,11 @@ app.MapGet("endpoint/function", async context => {
     await TextResponseFormatter.Singleton.Format(context, "Endpoint Function: It is sunny in LA");
 });
 
+
+app.MapGet("endpoint/function/typeBroker", async context => {
+    await TypeBroker.Formatter.Format(context, "Endpoint Function: It is sunny in LA");
+});
+
+
+
 app.Run();
