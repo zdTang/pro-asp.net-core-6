@@ -3,6 +3,9 @@ using Platform.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+builder.Services.AddSingleton<IResponseFormatter, HtmlResponseFormatter>();
+
 var app = builder.Build();
 
 app.UseMiddleware<WeatherMiddleware>();
@@ -18,15 +21,23 @@ app.MapGet("middleware/function", async (context) => {
 
 app.MapGet("endpoint/class", WeatherEndpoint.Endpoint);
 
+// Singleton approach
 app.MapGet("endpoint/function", async context => {
     //await context.Response.WriteAsync("Endpoint Function: It is sunny in LA");
     await TextResponseFormatter.Singleton.Format(context, "Endpoint Function: It is sunny in LA");
 });
 
 
+// TypeBroker approach
 app.MapGet("endpoint/function/typeBroker", async context => {
     await TypeBroker.Formatter.Format(context, "Endpoint Function: It is sunny in LA");
 });
+
+// Dependency Injection approach
+app.MapGet("endpoint/function/dependencyInjection", async (HttpContext context,IResponseFormatter formatter) => {
+    await formatter.Format(context, "Endpoint Function: It is sunny in LA");
+});
+
 
 
 
