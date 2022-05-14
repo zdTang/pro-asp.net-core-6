@@ -9,6 +9,10 @@ app.UseMiddleware<WeatherMiddleware>();
 
 IResponseFormatter formatter = new TextResponseFormatter();
 app.MapGet("middleware/function", async (context) => {
+    // The formatter Instance is just a Carrier here.
+    // It's Format Method relies on dependencies "context" which will be passed by the Context it is applied
+    // But the Method will update its State. 
+    // That is to say, it relies on outside dependency to change its State                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
     await formatter.Format(context, "Middleware Function: It is snowing in Chicago");
 });
 
