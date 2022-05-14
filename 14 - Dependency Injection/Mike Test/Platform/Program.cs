@@ -19,7 +19,11 @@ app.MapGet("middleware/function", async (context) => {
     await TextResponseFormatter.Singleton.Format(context, "Middleware Function: It is snowing in Chicago");
 });
 
-app.MapGet("endpoint/class", WeatherEndpoint.Endpoint);
+// The Endpoint is called by the framework
+
+//app.MapGet("endpoint/class", WeatherEndpoint.Endpoint);
+
+app.MapWeather("endpoint/class");
 
 // Singleton approach
 app.MapGet("endpoint/function", async context => {
