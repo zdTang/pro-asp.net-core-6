@@ -3,10 +3,14 @@ using Platform.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//builder.Services.AddSingleton<IResponseFormatter, HtmlResponseFormatter>();
 
-builder.Services.AddSingleton<IResponseFormatter, HtmlResponseFormatter>();
+// Here change to Transient, and change Implementation
+builder.Services.AddTransient<IResponseFormatter, GuidService>();
 
 var app = builder.Build();
+
+app.UseMiddleware<WeatherMiddlewareMoveDependencyToInvoke>();
 
 app.UseMiddleware<WeatherMiddleware>();
 
@@ -29,7 +33,7 @@ app.MapGet("middleware/function", async (context) => {
 
 //app.MapEndpoint<WeatherEndpoint>("endpoint/class");  // This one doesn't work as T is static 
 
-//app.MapEndpoint<WeatherEndpointNoStaticTwo>("endpoint/class");
+app.MapEndpoint<WeatherEndpointNoStaticTwo>("endpoint/class");
 
 // Singleton approach
 app.MapGet("endpoint/function", async context => {
@@ -44,6 +48,8 @@ app.MapGet("endpoint/function/typeBroker", async context => {
 });
 
 // Dependency Injection approach
+// For Function style Middleware, The AddTransient<>() works as expect! it looks like the new Instance will be passed here.
+// While for Class style Middleware, The AddTransient<>() will always pass the same Instance as it only run one time.
 app.MapGet("endpoint/function/dependencyInjection", async (HttpContext context,IResponseFormatter formatter) => {
     await formatter.Format(context, "Endpoint Function: It is sunny in LA");
 });
