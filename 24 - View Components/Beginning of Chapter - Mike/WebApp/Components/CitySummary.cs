@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewComponents;
 using WebApp.Models;
 
 namespace WebApp.Components
@@ -26,11 +28,14 @@ namespace WebApp.Components
         //     });
         // }
 
+        // Content always return a encoded string
+        // public IViewComponentResult Invoke(){
+        //     return Content("This is a <h3><i>string</i></h3>");
+        // }
+
 
         public IViewComponentResult Invoke(){
-            return Content("This is a <h3><i>string</i></h3>");
+            return new HtmlContentViewComponentResult(new HtmlString("This is a <h3><i>string</i></h3>"));
         }
-
-
     }
 }
