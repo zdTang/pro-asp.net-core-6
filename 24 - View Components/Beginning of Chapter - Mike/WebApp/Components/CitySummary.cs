@@ -59,7 +59,8 @@ namespace WebApp.Components
 
         // ViewComponent to receive a parameter
 
-           public IViewComponentResult Invoke(string themeName){
+           // give it a default Value
+           public IViewComponentResult Invoke(string themeName="success"){
             
             ViewBag.Theme = themeName;
             return View(new CityViewModel{

@@ -28,6 +28,7 @@
         @* approach two *@
         @* <vc:city-summary /> *@
         @* Here to pass a parameter to View Component *@
-        <vc:city-summary theme-name="danger"/>
+        @* <vc:city-summary theme-name="danger"/> *@
+        @await Component.InvokeAsync("CitySummary")
     </div>
 }
