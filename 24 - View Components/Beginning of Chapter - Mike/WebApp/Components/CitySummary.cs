@@ -33,9 +33,15 @@ namespace WebApp.Components
         //     return Content("This is a <h3><i>string</i></h3>");
         // }
 
+        // Return unEncoded HTML fragment
+        // public IViewComponentResult Invoke(){
+        //     return new HtmlContentViewComponentResult(new HtmlString("This is a <h3><i>string</i></h3>"));
+        // }
 
-        public IViewComponentResult Invoke(){
-            return new HtmlContentViewComponentResult(new HtmlString("This is a <h3><i>string</i></h3>"));
+
+        // Using string directly will return encoded HTML Fragment 
+         public string Invoke(){
+            return "<h3><i>string-Mike</i></h3>";
         }
     }
 }
