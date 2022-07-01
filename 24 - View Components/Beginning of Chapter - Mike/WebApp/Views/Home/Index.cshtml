@@ -24,6 +24,8 @@
     <div class="bg-info text-white m-2 p-2">
         @* @Json.Serialize(Model) *@
         @* approach one *@
-        @await Component.InvokeAsync("CitySummary")
+        @* @await Component.InvokeAsync("CitySummary") *@
+        @* approach two *@
+        <vc:city-summary />
     </div>
 }
