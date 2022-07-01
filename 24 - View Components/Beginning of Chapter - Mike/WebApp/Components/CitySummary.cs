@@ -10,10 +10,20 @@ namespace WebApp.Components
         {
             data = cdata;
         }
+        // Here we return string, actually we can 
+        // return other types
+        // public string Invoke()
+        // {
+        //     return $"{data.Cities.Count()} cities, " + $"{data.Cities.Sum(c => c.Population)} people";
+        // }
 
-        public string Invoke()
-        {
-            return $"{data.Cities.Count()} cities, " + $"{data.Cities.Sum(c => c.Population)} people";
+
+        // Here we return a View with Model
+        public IViewComponentResult Invoke(){
+            return View(new CityViewModel{
+                Cities=data.Cities.Count(),
+                Population=data.Cities.Sum(c=>c.Population)
+            });
         }
     }
 }

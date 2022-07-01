@@ -1,0 +1,24 @@
+@model CityViewModel
+<table class="table table-sm table-borded text-white bg-secondary">
+<thead>
+<tr>
+    <th colspan="2">Cites Summary</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td>Cities:</td>
+<td class="text-right">
+    @Model?.Cities
+    </td>
+
+</tr>
+<tr>
+    <td>Populiation:</td>
+<td class="text-right">
+    @Model?.Population?.ToString("#,###")
+    </td>
+
+</tr>
+</tbody>
+</table>
