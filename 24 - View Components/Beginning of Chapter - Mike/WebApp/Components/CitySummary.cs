@@ -44,13 +44,28 @@ namespace WebApp.Components
         //     return "<h3><i>string-Mike</i></h3>";
         // }
 
-         public string Invoke(){
-            if(RouteData.Values["controller"]!=null){
-                return " Controller Request";
-            }
-            else{
-                return "Razor Page Request";
-            }
+         
+        // Using Context data
+        //  public string Invoke(){
+        //     if(RouteData.Values["controller"]!=null){
+        //         return " Controller Request";
+        //     }
+        //     else{
+        //         return "Razor Page Request";
+        //     }
+            
+        // }
+
+
+        // ViewComponent to receive a parameter
+
+           public IViewComponentResult Invoke(string themeName){
+            
+            ViewBag.Theme = themeName;
+            return View(new CityViewModel{
+                Cities=data.Cities.Count(),
+                Population=data.Cities.Sum(c=>c.Population)
+            });
             
         }
     }
