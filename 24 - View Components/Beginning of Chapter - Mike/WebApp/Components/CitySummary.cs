@@ -40,8 +40,18 @@ namespace WebApp.Components
 
 
         // Using string directly will return encoded HTML Fragment 
+        //  public string Invoke(){
+        //     return "<h3><i>string-Mike</i></h3>";
+        // }
+
          public string Invoke(){
-            return "<h3><i>string-Mike</i></h3>";
+            if(RouteData.Values["controller"]!=null){
+                return " Controller Request";
+            }
+            else{
+                return "Razor Page Request";
+            }
+            
         }
     }
 }
